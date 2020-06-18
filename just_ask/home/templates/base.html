@@ -1,0 +1,238 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"  type="text/css"  href="{% static 'App.css' %}">
+    <link rel="stylesheet"  type="text/css"  href="{% static 'sidenav.css' %}">
+    <link rel="stylesheet"  type="text/css"  href="{% static 'footer.css' %}">
+    <link rel="stylesheet"  type="text/css"  href="{% static 'question.css' %}">
+
+    <title>Just-Ask</title>
+  </head>
+  <body style="zoom: 80%;">
+
+    <div id="NAVBAR">
+
+        <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark mystyle1">
+          <a class="navbar-brand Icon" href="myQuestion"><b class="">Just-Ask</b></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item bc">
+                <a class="nav-link" href="myQuestion">
+                <b class="nav1 sides">
+                  <i class="fa fa-home"></i>Home</b>
+                  </a>
+              </li>
+              <li class="nav-item bc">
+                <a class="nav-link active" href="AskQuestion">
+                  <b class="nav1 side1">Ask Questions</b>
+                </a>
+              </li>
+              <li class="nav-item bc">
+                <a class="nav-link active" href="UserProfile">
+                 <b class="nav1 side1"> User Profile</b>
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+                
+            {% if user.is_authenticated %}
+
+            <li class="nav-item bc" style="margin-top:20px;">
+                 <b>Welcome, {{user.username}}</b>
+                </a>
+              </li>
+
+              <li class="nav-item bc" style="margin-top:20px;">
+                <a class="nav-link active" href="logout">
+                 <b class="nav1">Logout</b>
+                </a>
+              </li>
+
+            {% else %}
+
+            <li class="nav-item bc">
+                <a class="nav-link active" href="login">
+                 <b class="nav1">Login</b>
+                </a>
+              </li>
+  
+              <li class="nav-item bc">
+                <a class="nav-link active" href="register">
+                 <b class="nav1">Register</b>
+                </a>
+              </li>
+              
+              {% endif %}
+
+              <li class="nav-item bc">
+                <a class="nav-link active" href="UserNotifications">
+
+                  {% if count_notis > 0 %}
+
+                  <img src="{% static 'bell.png' %}" style="height:30px;width:35px;margin-top:10px;margin-right:15px;" class="lev-avatar" />
+
+                  {% if count_notis > 10 %}
+                  <span class="badge badge-danger" style="margin-left:-37px;border-radius:30px;">{{count_notis}}</span>
+                  {% elif count_notis < 10 %}
+                  <span class="badge badge-danger" style="margin-left:-30px;border-radius:30px;">{{count_notis}}</span>
+                  {% endif %}
+
+                  {% else %}
+                    <img src="{% static 'Nobell.png' %}" style="height:30px;width:35px;margin-top:10px;" class="lev-avatar" />
+                    {% endif %}
+
+
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+  
+  </div>
+  
+
+  <div class="bkc">
+    
+                <ul class="ul1">
+                    <li class="widget widget-btn mg1">
+                      <a href="AskQuestion"><button type="button" data-toggle="modal" class="btn btn2">
+                            <i class="fa fa-plus"></i> ASK A QUESTION</button>
+                      </a> </li>
+                </ul>
+    
+                <hr class="line"/>
+        
+                <ul class="ul1 s1">
+    
+                    <li class="mg">
+    
+                        <ul class="ul1"><li><a href="index">
+    
+                        <a href="myQuestion">  <button type="button" class="btn btn1">
+                            <i class="sn fa fa-question-circle"></i>Questions</button></a>
+                          </a>
+
+                        </li>
+    
+                        <li class=""><a href="">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-tags"></i>Tags</button></a></li>
+    
+                        <li class=""><a href="">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-trophy"></i>Level</button></a></li>
+                        <li class=""><a href="">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-th-list"></i>Categories</button></a></li>
+                        <li class=""><a href="allUser">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-users"></i>Users</button></a></li>
+                        <li class=""><a href="UserSettings">
+                        <button type="button" class="btn btn1">
+                            <i class="sn fa fa-th-list"></i>Settings</button></a></li>
+                          </ul>
+                    </li>
+                    </ul>
+     
+                <hr class="line"/>
+    
+                <div class="sn1">
+                    ©2020  <br/>
+                    <a style="color:#3498db">Terms &amp; Privacy</a>
+                </div>
+    
+                <hr class="line"/>
+    
+            </div>
+
+
+            {% block content %}
+
+
+            {% endblock %}
+
+
+  </body>
+
+  <footer class="main-footer">
+        
+    <div class="container" >
+        <div class="row">
+        <div class="col-md-4 sets1">
+            <div class="contact-details">
+            <p>53 Broadway, Broklyn, NY 11249</p>
+            <p>Phone: (020) 123 456 789</p>
+            <p>Email: <a href="" class="colors">Info@Company.com</a></p>
+            <ul class="social-menu">
+                <li class="list-inline-item"><a href="#" class="colors"><i class="fa fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="colors"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="colors"><i class="fa fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="colors"><i class="fa fa-behance"></i></a></li>
+                <li class="list-inline-item"><a href="#" class="colors"><i class="fa fa-pinterest"></i></a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-md-4 sets1">
+            <div class="menus d-flex">
+            <ul class="ul1">
+            <b> <li> <a href="#" class="colors" >My Account</a></li>
+                <li class="mup"> <a href="#" class="colors">Add Listing</a></li>
+                <li class="mup"> <a href="#" class="colors mup">Pricing</a></li>
+                <li class="mup"> <a href="#" class="colors mup">Privacy &amp; Policy</a></li></b>
+            </ul>
+            <ul class="ul1">
+
+               <b><li> <a href="#" class="fhead">ABOUT US</a></li></b>
+               <b><li> <a href="#" class="colors">Our Partners</a></li>
+                <li class="mup"> <a href="#" class="colors mup">FAQ</a></li>
+                <li class="mup"> <a href="#" class="colors mup">How It Works</a></li>
+                <li class="mup"> <a href="#" class="colors mup">Contact</a></li></b>
+            </ul>
+            </div>
+        </div>
+        <div class="col-md-4 sets1">
+            <b><a href="" class="colors">
+            <div class="title colors"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
+                </a><a href="#" class="colors">
+                <div class="title mup colors"><strong>Great street atrs in London</strong><span class="date last-meta">October 26, 2016</span></div>
+                </a><a href="#" class="colors">
+                <div class="title mup colors"><strong>Best coffee shops in Sydney</strong><span class="date last-meta">October 26, 2016</span></div>
+                </a></b>
+        </div>
+        </div>
+    </div>
+    <div class="copyrights setsx sets">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            <p>&copy; 2017. All rights reserved. Your great site.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+
+  </html>

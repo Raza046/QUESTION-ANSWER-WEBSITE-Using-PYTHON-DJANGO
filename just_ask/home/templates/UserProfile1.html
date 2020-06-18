@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color: #121212;padding-bottom: 50px;">
+
+      <img style="margin-top:300px;margin-left:20px ;" src="{{UP.prof_pic}}" class="avatar avatar2" />
+      
+    </div>
+
+  </div>
+
+            
+            <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+              {% if UP.user == request.user %}
+
+              <h1 style="margin-left: 400px;">YOUR PROFILE</h1>
+
+              {% else %}
+
+              <h1 style="margin-left: 400px;">{{UP.user.username|upper}}'s PROFILE</h1>
+
+ 
+                {% if cond == "True" %}
+
+                <p class="btn btn-success">You are Following him</p>
+
+                {% else %}
+
+                <a href="{% url 'FollowUser' UP.id %}"><button class="btn btn-primary" style="height:50px;width:120px;">Follow</button></a>
+                
+                {% endif %}
+
+
+              
+
+
+          {% endif %}
+
+          <div class="row" style="margin-top:130px;">
+
+              <div class="col-md-3 fol" style="border-radius:10px;">
+                
+                <img src="{% static 'followers.png' %}" class="fol-avatar" />
+                {% if UP.user == request.user %}
+                <a href="UserFollowers" style="margin-left:50px;color:black;text-decoration:none;"><b>Followers</b></a>
+                {% else %}
+                <a href="{% url 'OtherUserFollower' UP.id %}" style="margin-left:50px;color:black;text-decoration:none;"><b>Followers</b></a>
+                {% endif %}
+                <br>
+                <br>
+
+                {% if UP.followers == NULL %}
+
+                  {% if UP.user == request.user %}
+                  <center>You have no Followers.</center>
+                  {% else %}
+                    <center>{{UP.user.username|upper}} have no Followers.</center>
+                  {% endif %}
+
+                {% else %}
+
+                  {% if UP.user == request.user %}
+                    <center>You have has {{UP.followers.count}} Followers.</center>
+                  {% else %}
+                    <center>{{UP.user.username|upper}} has {{UP.followers.count}} Followers</center>
+                  {% endif %}
+
+                {% endif %}
+
+                
+              </div>
+
+              <div class="col-md-3 fol" style="margin-left: 30px;border-radius:10px;">
+
+                <img src="{% static 'followers.png' %}" class="fol-avatar" />
+
+                {% if UP.user == request.user %}
+                <a href="UserFollowing" style="margin-left:50px;color:black;text-decoration:none;"><b>Following</b></a>
+                {% else %}
+                <a href="{% url 'OtherUserFollowing' UP.id %}" style="margin-left:50px;color:black;text-decoration:none;"><b>Following</b></a>
+                {% endif %}
+
+                <br>
+                <br>
+
+                {% if UP.following == NULL %}
+
+                  {% if UP.user == request.user %}
+                  <center>You have no Following.</center>
+                  {% else %}
+                    <center>{{UP.user.username|upper}} is Following no one.</center>
+                  {% endif %}
+
+                {% else %}
+
+                  {% if UP.user == request.user %}
+                    <center>You are following {{UP.following.count}} users.</center>
+                  {% else %}
+                    <center>{{UP.user.username|upper}} is following {{UP.following.count}} users</center>
+                  {% endif %}
+
+                {% endif %}
+
+
+              </div>
+
+              <div class="col-md-3 fol" style="margin-left: 30px;border-radius:10px;">
+
+                <img src="{% static 'level.png' %}" class="lev-avatar" />
+                <b style="margin-left:50px">LEVEL</b>
+                <br>
+                <br>
+                <center>{{UP.level}} Level</center>
+
+              </div>
+
+            </div>
+
+            <hr style="margin-top: 40px;margin-bottom:40px;" />
+
+            <div class="row" style="margin-top:50px;border-radius:10px;">
+
+              <div class="col-md-3 fol">
+
+                <img src="{% static 'answers.png' %}" class="lev-avatar" />
+
+                <a  href="{% url 'UserAnswers' UP.id %}" style="margin-left:50px;color:black;text-decoration:none;"><b>ANSWERS</b></a>
+                <br>
+                <br>
+                <center>{{answers}}</center>
+
+              </div>
+
+              <div class="col-md-3 fol" style="margin-left: 30px;border-radius:10px;">
+                
+                <img src="{% static 'questions.png' %}" class="lev-avatar" />
+
+                {% if UP.user == request.user %}
+
+                <a  href="UserQuestions" style="margin-left:50px;color:black;text-decoration:none;"><b>QUESTIONS</b></a>
+
+                {% else %}
+
+                <a  href="{% url 'OUserQuestions' UP.id %}" style="margin-left:50px;color:black;text-decoration:none;"><b>QUESTIONS</b></a>
+                
+                {% endif %}
+
+                <br>
+                <br>
+                <center>{{qs}}</center>
+
+              </div>
+
+
+              <div class="col-md-3 fol" style="margin-left:30px;border-radius:10px;">
+
+                <img src="{% static 'heart.png' %}" style="margin-left:-15px" class="lev-avatar" />
+                <a href="{% url 'UserFavQuestions' UP.id %}" style="color:black;text-decoration:none;margin-left:40px"><b>FAVORATE QUESTIONS</b></a>
+                <br>
+                <br>
+                <center>{{fav_qs}}</center>
+
+              </div>
+
+
+            </div>
+
+            <hr style="margin-top: 40px;margin-bottom:40px;" />
+
+            <div class="row" style="margin-top:50px;border-radius:10px;">
+
+              <div class="col-md-3 fol">
+
+                <img src="{% static 'heart.png' %}" style="margin-left:-15px" class="lev-avatar" />
+               <a href="{% url 'UserFavAnswer' UP.id %}" style="color:black;text-decoration:none;margin-left:40px"><b>FAVORATE ANSWER</b></a>
+                <br>
+                <br>
+                <center>{{fav_ans}}</center>
+
+              </div>
+
+              <div class="col-md-3 fol" style="margin-left:30px;border-radius:10px;">
+                
+                <img src="{% static 'questions.png' %}" class="lev-avatar" />
+
+                <a  href="{% url 'OtherUserBestQuest' UP.id %}" style="margin-left:50px;color:black;text-decoration:none;"><b> BEST QUESTIONS</b></a>
+                <br>
+                <br>
+                <center>{{b_qs}}</center>
+
+              </div>
+
+
+              <div class="col-md-3 fol" style="margin-left:30px;border-radius:10px;">
+
+                <img src="{% static 'bestAnswer1.png' %}" style="margin-left:40px" class="lev-avatar" />
+               <a href="{% url 'UserBestAnswer' UP.id %}" style="color:black;text-decoration:none;"><b>BEST ANSWERS</b></a>
+                <br>
+                <br>
+                <center>{{b_ans}}</center>
+
+              </div>
+
+
+            </div>
+
+
+
+          </div>
+
+            <hr style="margin-top: 100px;margin-bottom:100px;"/>
+
+
+  {% endblock %}
+

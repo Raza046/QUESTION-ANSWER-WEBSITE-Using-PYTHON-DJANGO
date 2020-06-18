@@ -1,0 +1,49 @@
+.ul1{
+    list-style-type:none;
+}
+
+.main-footer{
+    margin-top: 200px;
+    position: relative;
+    color: white;
+    background-color: #222322;
+}
+
+.sets1{
+    margin-top: 100px;
+    font-family: bold;
+}
+
+.mup{
+    margin-top: 10px;
+}
+
+.colors{
+    color: grey;
+    transition: 1s;
+}
+
+.nu:hover{
+    text-decoration: none;
+}
+
+.colors:hover{
+    text-decoration: none;
+    color: white;
+    transition: 1s;
+}
+
+.fhead{
+
+    color: white;
+}
+
+.fhead:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.sets{
+    padding-bottom: 50px;
+}
+

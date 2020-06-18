@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+    <center><h1 style="font-family:bold; margin-top:50px;"> PROFILE SETTINGS </h1></center>
+
+    <hr>
+
+    {% load crispy_forms_tags %}
+
+    {{ form.media }}
+
+    <form class="ui form" action="" method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+    
+        <img style="margin-top:80px;margin-bottom:30px;margin-left:770px;height:150px;width:150px;" src="{{u1.prof_pic}}" class="avatar avatar2" />
+        <center style="padding-left:150px;padding-right:150px">{{ form|crispy }}</center>
+    
+        <center><button type="submit" class="btn btn-danger" style="margin:50px;font-family:bold;">Save Changes</button></center>
+
+        </form>
+
+        {% endblock %}

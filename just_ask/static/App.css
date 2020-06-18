@@ -1,0 +1,147 @@
+.mystyle {
+  text-align: center;
+  font-family: bold;
+}
+
+.Icon{
+  font-size: 27px;
+  margin-left: 20px;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.side{
+  margin-left:50px;
+}
+
+.aStyle{
+  margin-left:50px;
+  color: black;
+}
+
+.aStyle:hover{
+  color: black;
+  text-decoration:none;
+}
+
+.up{
+  border:1px solid #dadfea;
+  padding-bottom: 60px;
+  text-align: center;
+  margin-left: 30px;
+  margin-top:20px;
+}
+
+.up1{
+  font-family:bold;
+  margin-top:30px;
+
+}
+
+
+.avatar {
+  vertical-align: middle;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-left: 5px;
+
+}
+
+.lev-avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+  margin-top: 5px;
+  margin-left: 5px;
+
+}
+
+.fol-avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.avatar1{
+  border:4px solid #dadfea;
+  padding:5px;
+  transition: 0.7s;
+}
+
+.avatar1:hover{
+
+  transition: 0.7s;
+  border:4px solid #536DF0;
+  padding:5px;
+
+}
+
+.avatar2{
+
+  border:4px solid #536DF0;
+  padding:5px;
+  transition: 0.7s;
+}
+
+.fol{
+
+  border:1px solid #dadfea;
+  padding: 30px;
+  text-align: left;
+}
+
+.ans-1{
+
+  border:1px solid #dadfea;
+  padding: 30px;
+  text-align: left;
+}
+
+.side1{
+  margin-left: 30px;
+  padding-right: 30px;
+  
+}
+
+.sides{
+  padding-right: 40px;
+  padding-left:-30px;
+}
+
+
+.nav1{
+color: white;
+transition: all 1s;
+width: 50px;
+padding: 8px;
+
+}
+
+.bc{
+  color: white;
+  transition: all 1s;
+}
+
+.nav1:hover{
+  background-color:white;
+  transition: all 1s;
+  color: black;
+}
+
+
+.mystyle1 {
+  text-align: center;
+  font-family:'Courier New', Courier, monospace;
+  color: black;
+  height: 70px;
+}
+
+.pad{
+  padding:70px;
+  padding-bottom:50px;
+}

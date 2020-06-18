@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+
+            <center><h1 style="font-family:bold; margin-top:50px;"> FOLLOWERS </h1></center>
+
+            <hr>
+
+            <div class="row" style="margin-left:300px;">
+        
+              {% for au in curr_user.followers.all %}
+
+              <div class="col-md-3 up" style="background-color:#212529;border-radius:10px;">
+                <br>
+                <a href="{% url 'DetailProfile' au.id %}"><img src="{{au.prof_pic}}" class="avatar avatar1" /></a>
+                <h4 class="up1"><a href="{% url 'DetailProfile' au.id %}" style="text-decoration:none;color:white;">{{au.user.username|upper}}</a></h4>
+                <h4 class="up1"><button class="btn btn-success" style="text-decoration:none;">{{au.level}}</button></h4>
+              </div>
+
+              {% endfor %}
+              
+
+            </div>
+
+
+        {% endblock %}
+

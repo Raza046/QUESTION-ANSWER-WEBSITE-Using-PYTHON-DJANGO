@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+
+            <center><h1 style="font-family:bold; margin-top:50px;"> USER SETTINGS </h1></center>
+
+            <hr>
+
+            <div class="row" style="margin-left:300px;">
+
+               <a href="{% url 'ProfileSettings' u1.id %}"><button class="btn btn-primary">Profile Settings</button></a>
+
+            </div>
+
+
+        {% endblock %}
+

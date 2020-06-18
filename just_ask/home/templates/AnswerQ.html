@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+  <center><h1 style="font-family:bold; margin:100px;">ANSWER THIS QUESTION</h1></center>
+
+  {% load crispy_forms_tags %}
+
+
+      {{ form.media }}
+
+      <form class="ui form" action="" method="POST" >
+
+        {% csrf_token %}
+    
+        <center style="padding-left:150px;padding-right:150px">{{ form|crispy }}</center>
+    
+        <center><button type="submit" class="btn btn-danger" style="margin:50px;font-family:bold;" >Post Answer</button></center>
+      
+        </form>
+
+    {% endblock %}

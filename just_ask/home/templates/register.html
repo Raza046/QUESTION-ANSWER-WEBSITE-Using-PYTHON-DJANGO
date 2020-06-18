@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"/>
+      
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"  type="text/css"  href="skills.css">
+    <link rel="stylesheet"  type="text/css"  href="styling.css">
+    <link rel="stylesheet"  type="text/css"  href="{% static 'styling.css' %}">
+
+    <title>Just-Ask</title>
+  </head>
+  <body style="zoom: 80%;">
+
+    <div id="root"></div>
+
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+
+        <div class="fadeIn first">
+          <h1 style="font-family: bold; margin-top:20px;">REGISTER</h1>
+        </div>
+    
+      
+        <form action="register" method="POST">
+    
+          {% csrf_token %}
+
+          <input style="margin-top: 50px;" type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+          <input style="margin-top: 30px;" type="email" id="email" class="fadeIn second" name="email" placeholder="Email">
+          <input style="margin-top: 30px;" type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+          <input style="margin-top: 30px;" type="password" id="password1" class="fadeIn third" name="password1" placeholder="Confirm Password">
+          <input style="margin-top: 20px;" type="submit" class="fadeIn fourth" value="Register">
+        </form>
+    
+        <div id="formFooter" style="margin-top: 0px;">
+          <a class="underlineHover" href="login">Already have an account ? </a>
+        </div>
+    
+      </div>
+    </div>
+  
+  
+  </body>
+</html>

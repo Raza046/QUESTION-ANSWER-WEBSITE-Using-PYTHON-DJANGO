@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color: #121212;padding-bottom: 50px;">
+
+      <a href="UserProfile"><img style="margin-top:300px;margin-left:20px ;" src="{{UP.prof_pic}}" class="avatar avatar2" /></a>
+      
+    </div>
+
+  </div>
+
+            
+            <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+            <h1 style="margin-left: 400px;">USER DETAILS</h1>
+
+              </div>
+
+
+
+          {% for ans1 in qs.Questions.all %}
+
+
+              <div class="row" style="margin-top: 100px;">
+
+                    
+                <div class="col-sm-8" style="margin-left:325px;font-family:bold;">
+                    <div>
+                      <div >
+                        <h3 style="color:black;margin-top:30px;margin-bottom:30px;"><b>YOUR QUESTION</b></h3>
+                        </div>
+                        <h3><b style="margin-left:60px;">{{ans1.q_title}}</b></h3>
+                    </div>
+                    <div class="q-lbtm-content">
+                        <div class="textStyle" style="margin-top:10px;margin-left:60px">
+                            <h5 style="color:#C90505;"><b>{{ans1.content}}  ?</b></h5>
+                        </div>
+                         <div class="question-cat">
+                            <ul class="ul1">
+                                    <li style="margin-left:15px; margin-top:20px">
+                                        <button class="btn btn-primary btn3">{{ans1.tag}}</button>
+                                    </li>
+                            </ul>
+                        
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+                <hr/>
+
+
+      {% endfor %}
+                
+
+
+  {% endblock %}
+

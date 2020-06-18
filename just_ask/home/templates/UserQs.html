@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color: #121212;padding-bottom: 50px;">
+
+      <img style="margin-top:300px;margin-left:20px ;" src="{{qs.prof_pic}}" class="avatar avatar2" />
+      
+    </div>
+
+  </div>
+
+          {% if qs.user == request.user %}
+
+          <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+            <h1 style="margin-left: 400px;">YOUR QUESTIONS</h1>
+
+              </div>
+
+            {% else %}
+            <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+              <h1 style="margin-left: 400px;">{{qs.user.username|upper}}'s QUESTIONS</h1>
+  
+                </div>
+    
+            {% endif %}
+
+          {% for ans1 in qs.Questions.all %}
+    
+              {% ifchanged ans1.id %}
+
+              <div class="row" style="margin-top: 100px;">
+
+                    
+                <div class="col-sm-8 setts1" style="padding:10px;margin-left:325px;background-color:#212529;border-radius:10px;">
+                    <div>
+                      <div>
+                        <a href="{% url 'DetailProfile' qs.id %}"><img src="{{qs.prof_pic}}" class="avatar avatar1"/></a>
+                         <b style="margin-left: 20px;color:white;"> {{qs.user.username|upper}} </b><p style="color:white;margin-left:820px;margin-top:-35px">{{ans1.dateTime}}
+                          {% for fq in qs.FavQuestions.all %}
+
+                            {% if fq.id == ans1.id %}
+                              <img src="{% static 'star.png' %}"  style="height:30px;width:30px;margin-left:60px;" />
+                            {% endif %}
+
+                          {% endfor %}
+
+                        </div>
+                      <h3><a href="{% url 'DetailQuestion' ans1.id %}" style="color:#F77E7E;text-decoration:none"><b class="question-title" style="margin-left:60px;">{{ans1.q_title}}</b></a></h3>
+                    </div>
+                    <div class="q-lbtm-content">
+                        <div class="textStyle" style="margin-top:10px;margin-left:60px">
+                            <h5 style="color:whitesmoke;"><b>{{ans1.content}}  ?</b></h5>
+                        </div>
+                         <div class="question-cat">
+                            <ul class="ul1">
+                                    <li style="margin-left:15px; margin-top:20px">
+                                        <button class="btn btn-primary btn3">{{ans1.tag}}</button>
+                                    </li>
+                            </ul>
+                        
+                        </div> 
+
+                    <div class="question-cat" style="margin-left:16px;margin-top:40px;">
+                      <ul class="ul1">
+                              <li style="margin-top:-10px">
+                                  <button class="btn ansViewTag" style="border-radius:5px;color:black;">
+                                  <img  src="{% static 'eye.png' %}" class="ans-img" />
+                                  <b> Views {{ans1.views}} </b></button>
+      
+                                  <button class="btn ansViewTag" style="border-radius:5px;color:black;">
+                                  <img  src="{% static 'ans1.png' %}" class="ans-img" />
+                                 <b> Answers {{ans1.answers}} </b></button>
+                                 <button class="btn btn-danger reportTag"> Report </button>
+                              </li>
+                          </ul>
+                      </div>    
+                    </div>
+                  </div>
+
+
+
+                  </div>
+                <hr/>
+
+
+
+                {% if qs %}
+             
+
+                <!-- <h3 style="color:black;font-family:bold;margin-left:350px;"><b>ANSWERS</b></h3>
+
+                  {% for quest1 in an.all %}
+                
+
+                  <div class="row" style="margin-top:50px;">
+
+                    
+                    <div class="col-sm-8" style="margin-left:325px;font-family:bold;">
+                        <div class="q-lbtm-content">
+
+                            <a href="UserProfile"><img src="{{an1.user.prof_pic}}" class="avatar avatar2" /></a>
+                            <b style="margin-left:20px;">{{an1.user.user.username|upper}}</b><p style="color:grey; margin-left:820px; margin-top:-35px">July 14, 2016</p>
+                            <div>
+                              <div style="margin-top:40px;margin-bottom:40px;">
+                              </div>
+                              <h4>
+                              <b class="question-title" style="margin-left:60px;">{{quest1.question.q_title}}</b>
+                              </h4>
+                          </div>
+                          <div class="q-lbtm-content" style="margin-top:30px;">
+                              <div class="textStyle" style="margin-top:10px;margin-left:60px">
+                                  <p><b>{{quest1.content}}</b></p>
+                              </div>
+                              <div class="question-cat" style="margin-top:30px;">
+                                  <ul class="ul1">
+                                          <li style="margin-left:15px; margin-top:-10px">
+                                              <button class="btn btn-primary btn3" >Tag</button>
+                                          </li>
+                                  </ul>
+                              
+                              </div>
+                              <hr/>
+      
+
+                          </div>
+
+                        </div>
+
+                    </div>
+
+                  </div>
+                
+                <hr/>
+                {% endfor %}
+                 -->
+
+                 {% else %}
+                
+                  <center><h3 style="font-family:bold; margin:40px;">NO ANSWERS YET</h3></center>
+                
+           {% endif %}
+
+        {% endifchanged %}
+
+    {% endfor %}
+                
+
+{% endblock %}
+

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color: #121212;padding-bottom: 50px;">
+
+      <img style="margin-top:300px;margin-left:20px ;" src="{{qs.prof_pic}}" class="avatar avatar2" />
+      
+    </div>
+
+  </div>
+
+          {% if qs.user == request.user %}
+
+          <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+            <h1 style="margin-left: 400px;">YOUR FAV ANSWERS</h1>
+
+              </div>
+
+            {% else %}
+            <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+              <h1 style="margin-left: 400px;">{{qs.user.username|upper}}'s ANSWERS</h1>
+  
+                </div>
+    
+            {% endif %}
+
+          {% for ans1 in qs.FavAnswers.all %}
+  
+  
+              <div class="row" style="margin-top: 100px;">
+
+                    
+                <div class="col-sm-8 setts1" style="padding:10px;margin-left:325px;background-color:#212529;border-radius:10px;">
+                    <div>
+                      <div>
+                        <a href="{% url 'DetailProfile' ans1.user.id %}"><img src="{{ans1.user.prof_pic}}" class="avatar avatar1"/></a>
+                         <b style="margin-left: 20px;color:white;"> {{ans1.user.user.username|upper}} </b><p style="color:white;margin-left:820px;margin-top:-35px">{{ans1.dateTime}}
+                         <img src="{% static 'star.png' %}"  style="height:30px;width:30px;margin-left:60px;" />
+                        </div>
+
+                         <h3><a href="{% url 'DetailAnswer' ans1.id %}" style="color:#F77E7E;text-decoration:none"><b class="question-title" style="margin-left:60px;">{{ans1.q_title}}</b></a></h3>
+                    </div>
+
+                    <div class="q-lbtm-content">
+                        <div class="textStyle" style="margin-top:-25px;margin-left:60px">
+                          <h3>
+                          <a href="{% url 'DetailAnswer' ans1.id %}" style="color:#F77E7E;text-decoration:none"><b class="question-title" >{{ans1.question.q_title}}</b></a>
+                        </h3>
+                            <h5 style="color:white;margin-top:10px"><b>{{ans1.content}}</b></h5>
+                        </div>
+                         <div class="question-cat">
+                            <ul class="ul1">
+                                    <li style="margin-left:15px; margin-top:20px">
+                                        <button class="btn btn-primary btn3">{{ans1.tag}}</button>
+                                    </li>
+                            </ul>
+                        
+                        </div> 
+
+                        <div class="question-cat" style="margin-left:16px;margin-top:40px;">
+                          <ul class="ul1">
+                                  <li style="margin-top:-10px">
+                                      <button class="btn ansViewTag" style="border-radius:5px;color:black;padding:0px;">
+                                      <img  src="{% static 'eye.png' %}" class="ans-img" />
+                                      <b> Views {{ans1.views}} </b></button>
+          
+                                      <button class="btn ansViewTag" style="border-radius:5px;color:black;padding:0px;">
+                                      <img  src="{% static 'ans1.png' %}" class="ans-img" />
+                                     <b> Answers {{ans1.answers}} </b></button>
+                                     <button class="btn btn-danger reportTag"> Report </button>
+                                  </li>
+                              </ul>
+                          </div>    
+    
+                      </div>
+                    </div>
+                  </div>
+                <hr/>
+
+                <!-- {% if qs %}
+             
+
+
+                 {% else %}
+                
+                  <center><h3 style="font-family:bold; margin:40px;">NO ANSWERS YET</h3></center>
+
+                  {% endif %} -->
+
+
+    {% endfor %}
+                
+
+{% endblock %}
+

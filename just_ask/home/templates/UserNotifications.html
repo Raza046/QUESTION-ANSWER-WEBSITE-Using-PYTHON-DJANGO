@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+            <center><h1 style="font-family:bold;margin-top:50px;"> NOTIFICATIONS </h1></center>
+            <hr>
+
+          {% for l in my_notis %}
+
+
+            <div class="row" style="margin-left:300px;margin-top:100px;">
+
+              <div class="col-md-7">
+              <h4 style="font-family:bold;">{{l.from_user.user.username|capfirst}} {{l.message}} {{l.user.user.username|capfirst}}</h4>
+            </div>
+
+            {% if l.message == "had started Following You" %}
+
+            <div class="col-md-2">
+              <a href="{% url 'DetailProfile' l.from_user.id %}"><p class="btn btn-primary" style="font-family:bold;width:70%;">View</p></a>
+            </div>
+
+            {% elif l.message == "had asked a Question" %}
+
+            <div class="col-md-2">
+              <a href="{% url 'DetailQuestion' l.Question_id %}"><p class="btn btn-primary" style="font-family:bold;width:70%;">View Question</p></a>
+            </div>
+
+            {% elif l.message == "Liked Your Question" %}
+
+            <div class="col-md-2">
+              <a href="{% url 'DetailQuestion' l.Question_id %}"><p class="btn btn-primary" style="font-family:bold;width:70%;">View Question</p></a>
+            </div>
+
+            {% elif l.message == "had answered your question" %}
+
+            <div class="col-md-2">
+              <a href="{% url 'ShowAnswer' l.Question_id %}"><p class="btn btn-primary" style="font-family:bold;width:70%;">View Answer</p></a>
+            </div>
+
+            {% elif l.message == "Liked Your Answer" %}
+
+            <div class="col-md-2">
+              <a href="{% url 'DetailAnswer' l.Question_id %}"><p class="btn btn-primary" style="font-family:bold;width:70%;">View Answer</p></a>
+            </div>
+
+            {% elif l.message == "had updated his Question" %}
+
+            <div class="col-md-2">
+              <a href="{% url 'DetailQuestion' l.Question_id %}"><p class="btn btn-primary" style="font-family:bold;width:70%;">View Question</p></a>
+            </div>
+            
+            {% endif %}
+
+            {% if l.viewed == False %}
+
+            <div class="col-md-3">
+              <a href="{% url 'ReadNotifs' l.id %}"><p class="btn btn-success" style="font-family:bold;width:50%;">Mark as Read</p></a>
+            </div>
+
+            {% else %}
+
+            <div class="col-md-3">
+              <p class="btn btn-secondary" style="font-family:bold;width:50%;">Read</p></a>
+            </div>
+
+            {% endif %}
+
+          </div>
+
+            {% endfor %}
+
+        {% endblock %}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color: #121212;padding-bottom: 50px;">
+
+      <a href="UserProfile"></a><img style="margin-top:300px;margin-left:20px ;" src="{{UP.prof_pic}}" class="avatar avatar2" /></a>
+      
+    </div>
+
+  </div>
+
+
+            <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+            <h1 style="margin-left: 400px;">{{UP.user.username|upper}}'s DETAILS</h1>
+
+            <div class="row" style="margin-top:50px;">
+
+              <div class="col-md-3 fol">
+                
+                <a href="UserProfile"><img src="{% static 'followers.png' %}" class="fol-avatar" /></a>
+                <b style="margin-left:50px">Followers</b>
+                <br>
+                <br>
+
+                {% if UP.followers == NULL %}
+                <center>User no Followers.</center>
+                {% else %}
+                <center>User has {{UP.followers.count}} Followers</center>
+                {% endif %}
+
+                
+              </div>
+
+              <div class="col-md-3 fol" style="margin-left: 30px;">
+
+                <a href="UserProfile"><img src="{% static 'followers.png' %}" class="fol-avatar" /></a>
+                <b style="margin-left:50px">Following</b>
+                <br>
+                <br>
+
+                {% if UP.following == NULL %}
+                <center>User is Following no one.</center>
+                {% else %}
+                <center>User is Following {{UP.following.count}}.</center>
+                {% endif %}
+
+              </div>
+
+
+              <div class="col-md-3 fol" style="margin-left: 30px;">
+
+                <img src="{% static 'level.png' %}" class="lev-avatar" />
+                <b style="margin-left:50px">LEVEL</b>
+                <br>
+                <br>
+                <center>{{UP.level}} Level</center>
+
+              </div>
+
+            </div>
+
+
+            <hr style="margin-top: 40px;margin-bottom:40px;" />
+
+            <div class="row" style="margin-top:50px;">
+
+              <div class="col-md-3 fol">
+
+                <img src="{% static 'answers.png' %}" class="lev-avatar" />
+                <a href="UserAnswers"><b style="margin-left:50px">ANSWERS</b></a>
+                <br>
+                <br>
+                <center>2 Answers</center>
+
+              </div>
+
+              <div class="col-md-3 fol" style="margin-left: 30px;">
+
+                <img src="{% static 'questions.png' %}" class="lev-avatar" />
+                <b style="margin-left:50px">QUESTIONS</b>
+                <br>
+                <br>
+                <center>7 Questions</center>
+
+              </div>
+
+
+              <div class="col-md-3 fol" style="margin-left: 30px;">
+
+                <img src="{% static 'bestAnswer1.png' %}" class="lev-avatar" />
+                <b style="margin-left:50px">BEST ANSWER</b>
+                <br>
+                <br>
+                <center>1 Best Answer</center>
+
+              </div>
+          </div>
+
+          </div>
+
+            <hr style="margin-top: 100px;margin-bottom:100px;" />
+
+
+  {% endblock %}
+

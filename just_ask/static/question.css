@@ -1,0 +1,185 @@
+.sett{
+
+    margin-left: 300px;
+    font-family:'Bold';
+    padding: 5px;
+    padding-bottom:0px;
+    zoom: 100%;
+    transition: 1s;
+}
+  
+.setts1{
+
+    margin-left: 300px;
+    font-family: bold;
+    padding: 5px;
+    padding-bottom:0px;
+    zoom: 100%;
+    box-shadow:15px 15px 15px 15px #ccc;
+    transform: scale(1.001), translateZ(0);
+}
+
+.head2{
+
+    margin-left: 300px;
+    font-family:'Bold';
+    padding: 5px;
+    padding-bottom:0px;
+}
+
+.sett1{
+    margin-left: 300px;
+}
+
+.sett:hover{
+
+box-shadow:4px 4px 6px 7px #ccc;
+transition: transform 1s;
+transform: scale(1.001), translateZ(0);
+transition: all 1s;
+}
+    
+.avatar {
+
+vertical-align: middle;
+width: 75px;
+height: 75px;
+border-radius: 50%;
+margin-top: 5px;
+margin-left: 5px;
+
+}
+
+.avatar1{
+
+    border:2px solid #dadfea;
+    padding:5px;
+    border:2px solid #536DF0;
+    transition: 0.7s;
+  }
+
+.avatar1:hover{
+
+    border:2px solid  #4D4F5B;
+    transition: 0.7s;
+}
+
+.ans-img{
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius:50%;
+    color: grey;
+}
+
+
+  .ul1{
+    list-style-type:none;
+}
+
+.question-title{
+    font-family: bold;
+    transition:0.5s;
+}
+
+.question-title:hover{
+    transition:0.5s;
+    color: #C90505;
+}
+
+.hrSet{
+
+    margin-left: 272px;
+    margin-top: 36px;
+    
+}
+.clearfix{
+    color: grey;
+}
+
+.q-tag{
+
+    border-radius: 5px;
+}
+
+.question-cat{
+font-family: bold;  
+}
+
+.btn3{
+
+    background-color: #3561EE;
+    width: 90px;
+    margin-left: 5px;
+    padding: 2px;
+    transition: all 0.8s;
+    font-size: 12px;
+}
+
+.reportTag{
+
+    width: 90px;
+    margin-left: 25px;
+    padding: 2px;
+    font-size: 12px;    
+}
+
+.btn3:hover{
+    
+color: white;
+background-color:#676967;
+transition: all 0.8s;
+border-color: grey;
+}
+
+
+.ansViewTag{
+
+    background-color: white;
+    color: grey;
+    width: 90px;
+    margin-left: 5px;
+    padding: 2px;
+    transition: all 0.8s;
+    font-size: 12px;
+    border-radius: 0px;
+    border-color: white;
+}
+
+.ansViewTag:hover{
+    
+    color: black;
+    background-color: #E8EBE8;
+    border-color: white;
+    transition: all 0.8s;
+    }
+
+.ansTag{
+
+    font-family: 'Courier New', Courier;
+    letter-spacing: 2px;
+    width: 100px;
+    height: 40px;
+    padding: 2px;
+    font-size: 15px;
+    border-radius: 0px;
+    margin-left: 570px;
+    margin-top: 10px;
+}
+        
+.ansTags{
+
+    font-family: 'Courier New', Courier;
+    letter-spacing: 2px;
+    width: 100px;
+    height: 40px;
+    padding: 2px;
+    font-size: 15px;
+    border-radius: 0px;
+    margin-top: 20px;
+}
+
+.textStyle{
+    color: grey;
+    font-family: bold; 
+}

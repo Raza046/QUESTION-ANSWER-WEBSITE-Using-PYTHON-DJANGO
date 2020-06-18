@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+  {% block content %}
+
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#121212;padding-bottom: 50px;">
+
+      <img style="margin-top:300px;margin-left:20px;" src="{{u1.prof_pic}}" class="avatar avatar2" />
+      
+    </div>
+
+  </div>
+
+          {% if u1.user == request.user %}
+
+          <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+            <h1 style="margin-left: 400px;">YOUR BEST QUESTIONS</h1>
+
+              </div>
+
+            {% else %}
+            <div style="margin-left:300px;margin-top:100px;font-family: bold;">
+
+              <h1 style="margin-left: 400px;">{{u1.user.username|upper}}'s BEST QUESTIONS</h1>
+  
+                </div>
+    
+            {% endif %}
+
+            {% for q1 in qs %}
+
+                      <div class="row" style="margin-top: 100px;">
+                        
+                          <div class="col-sm-8 setts1" style="padding:10px;margin-left:325px;background-color:#212529;border-radius:10px;">
+                              <div>
+                                <div>
+                                  <a href="{% url 'DetailProfile' u1.id %}"><img src="{{u1.prof_pic}}" class="avatar avatar1"/></a>
+                                  <b style="margin-left: 20px;color:white;"> {{u1.user.username|upper}} </b><p style="color:white;margin-left:820px;margin-top:-35px">{{q1.dateTime}}
+                                    {% for fq in u1.FavQuestions.all %}
+
+                                      {% if fq.id == q1.id %}
+                                        <img src="{% static 'star.png' %}"  style="height:30px;width:30px;margin-left:60px;" />
+                                      {% endif %}
+          
+                                    {% endfor %}
+          
+                                  </div>
+                                <h3><a href="{% url 'DetailQuestion' q1.id %}" style="color:#F77E7E;text-decoration:none"><b class="question-title" style="margin-left:60px;">{{q1.q_title}}</b></a></h3>
+                              </div>
+                              <div class="q-lbtm-content">
+                                  <div class="textStyle" style="margin-top:10px;margin-left:60px">
+                                      <h5 style="color:whitesmoke;"><b>{{q1.content}}  ?</b></h5>
+                                  </div>
+                                  <div class="question-cat">
+                                      <ul class="ul1">
+                                              <li style="margin-left:15px; margin-top:20px">
+                                                  <button class="btn btn-primary btn3">{{q1.tag}}</button>
+                                              </li>
+                                      </ul>
+                                  
+                                  </div> 
+          
+                              <div class="question-cat" style="margin-left:16px;margin-top:40px;">
+                                <ul class="ul1">
+                                        <li style="margin-top:-10px">
+                                            <button class="btn ansViewTag" style="border-radius:5px;color:black;">
+                                            <img  src="{% static 'eye.png' %}" class="ans-img" />
+                                            <b> Views {{q1.views}} </b></button>
+                
+                                            <button class="btn ansViewTag" style="border-radius:5px;color:black;">
+                                            <img  src="{% static 'ans1.png' %}" class="ans-img" />
+                                          <b> Answers {{q1.answers}} </b></button>
+                                          <button class="btn btn-danger reportTag"> Report </button>
+                                        </li>
+                                    </ul>
+                                </div>    
+                              </div>
+                            </div>
+          
+          
+          
+                            </div>
+                          <hr/>
+      
+          {% endfor %}
+
+{% endblock %}
+
